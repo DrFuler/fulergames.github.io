@@ -1,0 +1,239 @@
+/**
+ * @file style/page.css
+ *
+ * Define styling common to all pages (e.g., the sidebar)
+ */
+
+/** Source: http://stackoverflow.com/questions/14068103/disable-antialising-when-scaling-images */
+.nearest-neighbor {
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+html, body {
+    /** Ensure the page uses all available space (really necessary?) */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /** Set BG pattern and fallback color */
+    background-color: #AAAAAA;
+    background-image: url('/img/bg/tile.png');
+	font-size: 1.2rem;
+	display: grid;
+	place-items: center; /* Centers content vertically and horizontally */
+}
+
+.title{
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.life{
+	width: 64px;
+	height: 64px;
+}
+
+button {
+	font-size: 2rem;
+}
+
+	.selected{
+		background-color: #04AA6D;
+	}
+
+div.header {
+    /* Set the width to at most 780 px, but otherwise to 90% of the window */
+    max-width: 780px;
+    width:90%;
+    /* Set the height to at least 64 px, but expand as necessary */
+    min-height: 64px;
+    height: auto;
+    /* Setting a line height makes the text vertically centered because magic */
+    line-height: 64px;
+    /* Center it horizontally on the available space */
+    margin-left: auto;
+    margin-right: auto;
+    /* Separate it from the top of the window */
+    margin-top: 8px;
+    /* Leave 4 pixels between this and the element beneath */
+    margin-bottom: 4px;
+    /* Make the borders round and set the background/inner color */
+    border-radius: 16px;
+    background-color: #222034;
+}
+
+img.header, img.header_last  {
+    /* Make it take as much (or as few) space as needed */
+    width: auto;
+    /* Make it take as much (or as few) space as needed */
+    height: auto;
+    /* Separate each word from the one to its left by 8 pixels */
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+img.header_last {
+    margin-right: 8px;
+}
+
+/** Social logos (CSS that follows Twitter's guidelines) */
+img.socialbt {
+    /* Fix the width to 32px (minimum allowed by Twitter) */
+    width: 32px;
+    /* Leave at least 50% of the image's width of free room around it (i.e., 8
+     * pixels to each side) */
+    margin-left: 8px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/** Overwrite the underline on the title */
+a.header:hover {
+    text-decoration: none;
+}
+
+div.sidebar {
+    /* Set the width to at most 780 px, but otherwise to 90% of the window */
+    max-width: 780px;
+    width:90%;
+    /* Set the height to at least 48 px, but expand as necessary */
+    height: auto;
+    min-height: 48px;
+    /* Setting a line height makes the text vertically centered because magic */
+    line-height: 32px;
+    /* Center it horizontally on the available space */
+    margin-left: auto;
+    margin-right: auto;
+    /* Center the text horizontally */
+    text-align: center;
+    /* Leave 4 pixels between this and the elements the one at its right */
+    margin-bottom: 4px;
+    /* Make the borders round and set the background/inner color */
+    border-radius: 16px;
+    background-color: #222034;
+}
+
+a.sidebar {
+    /* Ensure every link has some breathing room around it */
+    display: inline-block;
+    /* Add 8 pixels of room around every link */
+    margin: 8px;
+}
+
+div.content {
+    /* Set the width to at most 780 px, but otherwise to 90% of the window */
+    max-width: 780px;
+    width:90%;
+    /* Make the sidebar fill the window or use up as much space as needed */
+    height: auto;
+    display: table;
+    /* Center it horizontally on the available space */
+    margin-left: auto;
+    margin-right: auto;
+    /* Leave 4 pixels between this and the element beneath */
+    margin-bottom: 4px;
+    /* Make the borders round and set the background/inner color */
+    border-radius: 16px;
+    background-color: #222034;
+}
+
+div.footer {
+    /* Set the width to at most 780 px, but otherwise to 90% of the window */
+    max-width: 780px;
+    width:90%;
+    /* Set the footer's height */
+    height: 32px;
+    /* Setting a line height makes the text vertically centered because magic */
+    line-height: 32px;
+    /* Center the text horizontally */
+    text-align: center;
+    /* Center it horizontally on the available space */
+    margin-left: auto;
+    margin-right: auto;
+    /* Separate it from the bottom of the window */
+    margin-bottom: 8px;
+    /* Make the borders round and set the background/inner color */
+    border-radius: 16px;
+    background-color: #222034;
+}
+
+p.footer {
+    /* Set the footer's color. */
+    color: #9badb7;
+    /* Make sure the font is small */
+    font-size: smaller;
+    /* Avoid "bleeding" this paragraph's margin above the div */
+    margin: 0;
+    /* NOTE: Centering is defined by its parent div. */
+}
+
+h1.content {
+    color: #cbdbfc;
+    font-size: 2em;
+    margin-left: 1em;
+}
+
+h2.content {
+    color: #cbdbfc;
+    font-size: 1.25em;
+    margin-left: 0.9em;
+}
+
+h3.content {
+    color: #cbdbfc;
+    font-size: 1.05em;
+    margin-left: 0.9em;
+}
+
+p.content {
+    color: #9badb7;
+    font-size: 1em;
+    margin-left: 1.5em;
+    margin-right: 2.5em;
+}
+
+img.content {
+    margin-top: 1em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+object.game {
+    margin: auto;
+    display: table;
+    padding: 4px;
+    border: solid;
+    border-color: #000000;
+}
+
+/**
+ * Default link styling:
+ *  - Underscore only on hover
+ *  - Click removes underscore but keeps color
+ */
+a {
+    text-decoration: none;
+}
+a:link {
+    color: #cbdbfc;
+}
+a:visited {
+    color: #9badb7;
+}
+a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+a:active {
+    text-decoration: none;
+    color: #ffffff;
+}
+

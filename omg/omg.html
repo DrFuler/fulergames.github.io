@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Tá Pegando Fogo! </title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="A Nave Tá Pegando Fogo, bixo!" />
+        <meta name="author" content="Fuler Padoveze" />
+        <link rel="icon" href="src/omg/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="style/omg.css" />
+    </head>
+	
+	<body>
+		<text class="title">A Nave Tá Pegando Fogo!</text>
+        <text>
+			Este aplicativo serve para controlar o tempo e falhas do jogo
+		</text>
+		<br>
+		Escolha o número de jogadores:<br>
+		<text>
+			<button id="4" onclick="clicker(this, 'players')" class="players selected">4 👤</button>
+			<button id="5" onclick="clicker(this, 'players')" class="players">5 👤</button>
+			<button id="6" onclick="clicker(this, 'players')" class="players">6 👤</button>
+			<button id="7" onclick="clicker(this, 'players')" class="players">7 👤</button>
+		</text>
+
+		<br>
+		<text><b>Missão</b> #:</text>
+		<text>
+			<button onclick="clicker(this, 'mission')" class="mission selected">1</button>
+			<button onclick="clicker(this, 'mission')" class="mission">2</button>
+			<button onclick="clicker(this, 'mission')" class="mission">3</button>
+			<button onclick="clicker(this, 'mission')" class="mission">4</button>
+			<button onclick="clicker(this, 'mission')" class="mission">5</button>
+			<button onclick="clicker(this, 'mission')" class="mission">6</button>
+			<button onclick="clicker(this, 'mission')" class="mission">7</button>
+			<button onclick="clicker(this, 'mission')" class="mission">8</button>
+			<button onclick="clicker(this, 'mission')" class="mission">9</button>
+			<button onclick="clicker(this, 'mission')" class="mission">10</button>
+		</text>
+		
+		<br>
+		<text>Número de <b>falhas</b>:</text>
+		<text>
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_1">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_2">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_3">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_4">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_5">
+		</text>
+		<text>
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_6">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_7">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_8">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_9">
+			<img src="src/omg/life.png" class="life" onclick="toggleLife(this)" id="life_10">
+		</text>
+			
+	</body>
+	
+	<script src="script/omg.js"></script>
+</html>
