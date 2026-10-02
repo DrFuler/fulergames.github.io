@@ -41,8 +41,8 @@ i{
 }
 
 .life{
-	width: 64px;
-	height: 64px;
+	width: 4rem;
+	height: 4rem;
 }
 
 button {
@@ -63,6 +63,14 @@ button {
 
 #start{
 	height: 5rem;
+}
+
+#audio {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 2.5rem;
+	height: 2.5rem;
 }
 
 div.header {

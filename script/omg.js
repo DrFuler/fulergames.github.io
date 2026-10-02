@@ -4,6 +4,10 @@ times[5] = [40, 25, 20, 18, 15, 12, 10, 8, 7, 6];
 times[6] = [50, 30, 25, 20, 18, 15, 12, 10, 9, 8];
 times[7] = [60, 40, 30, 25, 20, 18, 16, 14, 12, 10];
 
+var siren = new Audio('src/omg/panic.mp3');
+var alarm = new Audio('src/omg/alert.mp3');
+var end = new Audio('src/omg/explosion.mp3');
+
 function clicker(button, type){
 	document.querySelectorAll('.' + type).forEach(element => {
 		element.classList.remove("selected");
@@ -45,7 +49,7 @@ function timeRuns(timer){
 	if(isMissionRunning()){
 		if(timer[1] <= 0){
 			// When 0 miliseconds, reduce seconds
-			if((timer[0]-5) % 3 === 0 || timer[0] < 5){panic();}
+			if((timer[0]-5) % 5 === 0 || timer[0] < 5){panic(timer[0]);}
 			
 			timer[0] -= 1;
 			timer[1] = 99;
@@ -104,6 +108,7 @@ function toggleMission(){
 	else{
 		starter.innerText = "🚀 Começar Missão! 🚀";
 		enableButtons(true);
+		audioStop();
 	}
 	setBackground();
 };
@@ -123,11 +128,39 @@ function endMission(){
 		document.getElementById("mission_" + current_mission).classList.remove('selected');
 		document.getElementById("mission_" + (current_mission + 1)).classList.add('selected');
 	}
+	
 	setClock();
+	if(localStorage.omg_audio != "off"){end.play();}
 	
 	alert("Acabou a missão!");
 };
 
-function panic(){
+function panic(time){
+	if(localStorage.omg_audio != "off"){
+		if(time <= 5){siren.play();}
+		else{alarm.play();}
+	}
 	document.body.style.backgroundColor = "#FF0000";
+};
+
+function toggleAudio(mode){
+	var audio = document.getElementById("audio");
+	if(mode === undefined){mode = audio.src.includes("on");}
+
+	if(mode){
+		localStorage.omg_audio = "off";
+		audio.src = audio.src.replace("on","off");
+		audioStop();
+	}
+	else{
+		localStorage.omg_audio = "on";
+		audio.src = audio.src.replace("off","on");
+	}
+};
+if(localStorage.omg_audio == "off"){toggleAudio("off");}
+
+function audioStop(){
+	siren.pause();
+	alarm.pause();
+	end.pause();
 };
