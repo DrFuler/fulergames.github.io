@@ -49,6 +49,10 @@ button {
 	font-size: 1.5rem;
 }
 
+.done{
+	background-color: #666666;
+}
+
 .selected{
 	background-color: #04AA6D;
 }

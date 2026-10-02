@@ -16,31 +16,56 @@ function clicker(button, type){
 function getValue(type){
 	var retorno = "";
 	document.querySelectorAll('.' + type + '.selected').forEach(element => {
-		if(element.id){retorno = element.id;}
+		if(type == "players"){retorno = element.id;}
 		else{retorno = element.innerText;}
 	});
 	return parseInt(retorno);
 };
+
+function setBackground(){
+	var fire_counter = 0;
+	document.querySelectorAll('.life').forEach(element => {
+		if(element.src.includes("fire")){fire_counter++;}
+	});
+	
+	var color = (10 - fire_counter) * 17; // 170 = AA
+	document.body.style.backgroundColor = "rgb(170, " + color + ", " + color + ")";
+}
 
 function toggleLife(life){
 	if(Number.isInteger(life)){life = document.getElementById("life_" + life);}
 
 	if(life.src.includes("life")){life.src = life.src.replace("life","fire");}
 	else{life.src = life.src.replace("fire","life");}
+	
+	setBackground();
 };
 
 function timeRuns(timer){
 	if(isMissionRunning()){
-		if(timer[1] == 0){timer[0] -= 1; timer[1] = 99;}
-		else{timer[1] -= 1;}
+		if(timer[1] <= 0){
+			// When 0 miliseconds, reduce seconds
+			if((timer[0]-5) % 3 === 0 || timer[0] < 5){panic();}
+			
+			timer[0] -= 1;
+			timer[1] = 99;
+		}
+		else{
+			// Otherwise, reduce miliseconds
+			if(timer[1] == 90){setBackground();}
+			timer[1] -= 1;
+		}
 		
-		if(timer[0] >= 0){setTimeout(timeRuns, 10, timer);}
+		// If still time, triggers again in 10 miliseconds
+		if(timer[0] >= 0){
+			setTimeout(timeRuns, 10, timer);
+			updateClock(timer);
+		}
+		// Otherwise, end mission!
 		else{
 			timer = [0, 0];
 			endMission();
 		}
-		
-		updateClock(timer);
 	}
 	else{
 		setClock();
@@ -80,6 +105,7 @@ function toggleMission(){
 		starter.innerText = "🚀 Começar Missão! 🚀";
 		enableButtons(true);
 	}
+	setBackground();
 };
 
 function enableButtons(mode){
@@ -90,5 +116,18 @@ function enableButtons(mode){
 
 function endMission(){
 	toggleMission();
+	
+	var current_mission = getValue("mission");
+	document.getElementById("mission_" + current_mission).classList.add('done')
+	if(current_mission < 10){
+		document.getElementById("mission_" + current_mission).classList.remove('selected');
+		document.getElementById("mission_" + (current_mission + 1)).classList.add('selected');
+	}
+	setClock();
+	
 	alert("Acabou a missão!");
+};
+
+function panic(){
+	document.body.style.backgroundColor = "#FF0000";
 };
