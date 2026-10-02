@@ -30,16 +30,21 @@ function toggleLife(life){
 };
 
 function timeRuns(timer){
-	if(timer[1] == 0){timer[0] -= 1; timer[1] = 99;}
-	else{timer[1] -= 1;}
-	
-	if(timer[0] >= 0){setTimeout(timeRuns, 10, timer);}
-	else{
-		timer = [0, 0];
-		alert("Acabou a missão!");
+	if(isMissionRunning()){
+		if(timer[1] == 0){timer[0] -= 1; timer[1] = 99;}
+		else{timer[1] -= 1;}
+		
+		if(timer[0] >= 0){setTimeout(timeRuns, 10, timer);}
+		else{
+			timer = [0, 0];
+			alert("Acabou a missão!");
+		}
+		
+		updateClock(timer);
 	}
-	
-	updateClock(timer);
+	else{
+		setClock();
+	}
 };
 
 function setClock(){
@@ -60,5 +65,25 @@ function updateClock(timer){
 };
 
 function startMission(){
+	toggleMission();
 	timeRuns(setClock());
-}
+};
+
+function isMissionRunning(){return !document.getElementById("start").innerText.includes("Começar");};
+function toggleMission(){
+	var starter = document.getElementById("start");
+	if(starter.innerText.includes("Começar")){
+		starter.innerText = "❌ ABORTAR ❌ ";
+		enableButtons(false);
+	}
+	else{
+		starter.innerText = "🚀 Começar Missão! 🚀";
+		enableButtons(true);
+	}
+};
+
+function enableButtons(mode){
+	mode = !mode;
+	document.querySelectorAll('.players').forEach(element => {element.disabled = mode;});
+	document.querySelectorAll('.mission').forEach(element => {element.disabled = mode;});
+};
