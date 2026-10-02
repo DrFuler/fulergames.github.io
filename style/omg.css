@@ -31,8 +31,12 @@ body {
 	place-items: center; /* Centers content vertically and horizontally */
 }
 
+i{
+	font-size: 1rem;
+}
+
 .title{
-	font-size: 3rem;
+	font-size: 2.5rem;
 	font-weight: bold;
 }
 
@@ -58,7 +62,7 @@ button {
 }
 
 #start{
-	height: 6rem;
+	height: 5rem;
 }
 
 div.header {
