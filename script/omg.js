@@ -37,7 +37,7 @@ function timeRuns(timer){
 		if(timer[0] >= 0){setTimeout(timeRuns, 10, timer);}
 		else{
 			timer = [0, 0];
-			alert("Acabou a missão!");
+			endMission();
 		}
 		
 		updateClock(timer);
@@ -86,4 +86,9 @@ function enableButtons(mode){
 	mode = !mode;
 	document.querySelectorAll('.players').forEach(element => {element.disabled = mode;});
 	document.querySelectorAll('.mission').forEach(element => {element.disabled = mode;});
+};
+
+function endMission(){
+	toggleMission();
+	alert("Acabou a missão!");
 };

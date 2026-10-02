@@ -45,13 +45,17 @@ button {
 	font-size: 2rem;
 }
 
-	.mission{
-		font-size: 1.5rem;
-	}
+.mission{
+	font-size: 1.5rem;
+}
 
-	.selected{
-		background-color: #04AA6D;
-	}
+.selected{
+	background-color: #04AA6D;
+}
+
+#start{
+	height: 6rem;
+}
 
 div.header {
     /* Set the width to at most 780 px, but otherwise to 90% of the window */
